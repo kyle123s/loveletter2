@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #ffe0f0, #fff0f5);
+    overflow: hidden;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  .envelope {
+    width: 280px;
+    height: 200px;
+    background: #ffb6c1;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-image: url('https://i.pinimg.com/originals/e7/81/70/e78170ccb1b28e9394db6e74abff43f1.jpg');
+    background-size: cover;
+    z-index: 2;
+  }
+  .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #ff69b4;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    transition: transform 0.6s ease;
+    transform-origin: top;
+    border-radius: 10px 10px 0 0;
+  }
+  .flap.open {
+    transform: rotateX(180deg);
+  }
+  .letter {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+    z-index: 1;
+  }
+  .letter.visible {
+    opacity: 1;
+    transform: translateY(-420px);
+  }
+  .letter p {
+    color: #d63384;
+    font-size: 1em;
+    margin: 10px 0;
+    text-align: center;
+  }
+  .letter img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  .letter .nav-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  .letter button {
+    background: #d63384;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .flower {
+    position: absolute;
+    top: -50px;
+    width: 30px;
+    height: 30px;
+    background-image: url('http://1.bp.blogspot.com/-uHq_Idy_NQ4/TzdD1U72-dI/AAAAAAAAAE0/WS8YDKhscrI/s1600/pink-flower-wallpaper.jpg');
+    background-size: cover;
+    opacity: 0.8;
+    animation: fall linear infinite;
+    z-index: 0;
+  }
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  .bouquet {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    animation: fadeInUp 1s ease forwards;
+  }
+  .bouquet img {
+    width: 120px;
+    animation: bounce 1.5s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }

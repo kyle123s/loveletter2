@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lovely Natasha's Letter 💌</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+  <div class="envelope" onclick="openEnvelope()">
+    <div class="flap"></div>
+    <div class="letter" id="letter">
+      <div id="pages">
+        <div class="page">
+          <p>Para kay <strong>Lovely Natasha Clarianes</strong> 💗</p>
+          <p>Ang bilis noh? One month na agad tayo this April 14. Kahit LDR tayo, pakiramdam ko araw-araw pa rin kitang kasama.</p>
+          <p>Hindi man kita mahawakan ngayon, yung boses mo, messages at pics mo sapat na para mapasaya ako.</p>
+          <img src="lovely.jpg" alt="Lovely" />
+        </div>
+        <div class="page" style="display:none">
+          <p>Alam mo, kahit nagkakatampuhan tayo minsan, hindi ko kailanman naisip na bitawan ka.</p>
+          <p>Kasi sa bawat tampo, mas pinapatunayan lang nun na gusto nating ayusin — kasi mahal natin ang isa't isa.</p>
+          <p>Thank you kasi hindi ka sumusuko. Lagi kang bumabalik. Lagi tayong bumabalik sa isa't isa.</p>
+          <img src="lovely2.jpg" alt="Tampuhan Moments" />
+        </div>
+        <div class="page" style="display:none">
+          <p>Natatandaan mo nung sinabi ko na “hindi kita iiwan”?</p>
+          <p>Hanggang ngayon, hawak ko yun sa puso ko. ikaw lagi ang sagot sa lahat. Kapag ako yung may takot, ikaw yung lakas.</p>
+          <p>Kapag pagod na ako sa mundo, ikaw yung pahinga ko.</p>
+          <img src="lovely3.jpg" alt="Reassurance" />
+        </div>
+        <div class="page" style="display:none">
+          <p>One month pa lang tayo pero ang dami na nating napagdaanan.</p>
+          <p>At kahit anong mangyari, I’ll choose you — today, tomorrow, always.</p>
+          <p>Happy first month, Lovely Natasha Clarianes soon to be Gacita Mwehehehehehe🥰. You’re the best thing I’ve ever waited for. 🥺💖</p>
+          <img src="lovely4.jpg" alt="Us" />
+          <div class="bouquet" id="bouquet">
+            <p>🌸🥰 Para sa'yo, baby ko🥰🌸</p>
+            <img src="boque.jpg" alt="Bouquet" />
+          </div>
+        </div>
+      </div>
+      <div class="nav-btns">
+        <button onclick="prevPage()">Back</button>
+        <button onclick="nextPage()">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const flowerCount = 20;
+  for (let i = 0; i < flowerCount; i++) {
+    const flower = document.createElement('div');
+    flower.classList.add('flower');
+    flower.style.left = Math.random() * 100 + 'vw';
+    flower.style.animationDuration = (5 + Math.random() * 5) + 's';
+    flower.style.animationDelay = Math.random() * 5 + 's';
+    document.body.appendChild(flower);
+  }
+
+  let currentPage = 0;
+  const pages = document.querySelectorAll('.page');
+  const bouquet = document.getElementById('bouquet');
+
+  function openEnvelope() {
+    document.querySelector('.flap').classList.add('open');
+    document.getElementById('letter').classList.add('visible');
+  }
+
+  function showPage(index) {
+    pages.forEach((p, i) => {
+      p.style.display = i === index ? 'block' : 'none';
+    });
+    if (index === pages.length - 1 && bouquet) {
+      bouquet.style.display = 'block';
+    } else if (bouquet) {
+      bouquet.style.display = 'none';
+    }
+  }
+
+  function nextPage() {
+    if (currentPage < pages.length - 1) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  }
+
+  function prevPage() {
+    if (currentPage > 0) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  }
+
+  showPage(currentPage);
+</script>
+</body>
+</html>
